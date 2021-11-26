@@ -1,16 +1,16 @@
 {
   "private": true,
-  "displayName": "Plugin Name",
-  "name": "homebridge-plugin-name",
+  "displayName": "Homebridge Hyperion Remote",
+  "name": "@jensyfrenzy/homebridge-hyperion-remote",
   "version": "1.0.0",
-  "description": "A short description about what your plugin does.",
+  "description": "A basic homebridge plugin designed to work with hyperion.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/USERNAME/GITHUB_PROJECT_NAME.git"
+    "url": "git://github.com/jensyfrenzy/homebridge-hyperion-remote.git"
   },
   "bugs": {
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME/issues"
+    "url": "https://github.com/jensyfrenzy/homebridge-hyperion-remote/issues"
   },
   "engines": {
     "node": ">=14.18.1",
