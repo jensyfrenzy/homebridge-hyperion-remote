@@ -38,12 +38,8 @@ let hap: HAP;
 /*
  * Initializer function called when the plugin is loaded.
  */
-export = (api: API) => {
-  hap = api.hap;
-  api.registerAccessory('HyperionRemote', HyperionRemote);
-};
 
-class HyperionRemote implements AccessoryPlugin {
+export class HyperionRemote implements AccessoryPlugin {
 
   private log: Logging;
   private name: string;
