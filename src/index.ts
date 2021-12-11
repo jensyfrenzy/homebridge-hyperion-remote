@@ -1,9 +1,11 @@
 import { API } from 'homebridge';
-import { HyperionRemote } from './accessory';
+
+import { PLATFORM_NAME } from './settings';
+import { HyperionRemote } from './platform';
 
 /**
-  * This method registers the platform with Homebridge
-  */
-  export = (api: API) => {
-    api.registerAccessory('HyperionRemote', HyperionRemote);
-  };
+ * This method registers the platform with Homebridge
+ */
+export = (api: API) => {
+  api.registerPlatform(PLATFORM_NAME, HyperionRemote);
+};
