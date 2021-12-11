@@ -1,4 +1,4 @@
-import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
+import { Service, PlatformAccessory, CharacteristicValue, LogLevel } from 'homebridge';
 
 import { HyperionRemote } from './platform';
 
@@ -18,7 +18,9 @@ export class platformAccessory {
     private readonly platform: HyperionRemote,
     private readonly accessory: PlatformAccessory,
   ) {
-
+    this.platform.log.log(LogLevel.INFO, 'Hyperion Remote Host: ', this.platform.config.hyperionHost);
+    this.platform.log.log(LogLevel.INFO, 'Hyperion Remote Port: ', this.platform.config.hyperionPort);
+    this.platform.log.log(LogLevel.INFO, 'Hyperion Remote Effect: ', this.platform.config.hyperionEffect[0]);
     this.requestUrl = `http://${this.platform.config.hyperionHost}:${this.platform.config.hyperionPort}/json-rpc`;
 
     // set accessory information
@@ -52,7 +54,7 @@ export class platformAccessory {
     const requestBody: IHyperionEffectCommand = {
       command: 'effect',
       effect: {
-        name: this.platform.config.hyperionEffect,
+        name: this.platform.config.hyperionEffect[0],
       },
       priorty: 50,
       origin: 'homebridge',
