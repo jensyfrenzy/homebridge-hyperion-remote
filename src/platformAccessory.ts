@@ -3,7 +3,7 @@ import { Service, PlatformAccessory, CharacteristicValue, LogLevel } from 'homeb
 import { HyperionRemote } from './platform';
 
 import axios from 'axios';
-import { IHyperionCommand, IHyperionEffectCommand } from './interface';
+import { IHyperionClearCommand, IHyperionCommand, IHyperionEffectCommand } from './interface';
 
 /**
  * Platform Accessory
@@ -13,6 +13,7 @@ import { IHyperionCommand, IHyperionEffectCommand } from './interface';
 export class platformAccessory {
   private service: Service;
   private requestUrl: string;
+  private isOn = false;
 
   constructor(
     private readonly platform: HyperionRemote,
@@ -51,16 +52,28 @@ export class platformAccessory {
    * These are sent when the user changes the state of an accessory, for example, turning on a Light bulb.
    */
   async setOn() {
-    const requestBody: IHyperionEffectCommand = {
-      command: 'effect',
-      effect: {
-        name: this.platform.config.hyperionEffect[0],
-      },
-      priority: 50,
-      origin: 'homebridge',
-    };
+    let response;
+    if(!this.isOn) {
+      const requestBody: IHyperionEffectCommand = {
+        command: 'effect',
+        effect: {
+          name: this.platform.config.hyperionEffect[0],
+        },
+        priority: 50,
+        origin: 'homebridge',
+      };
 
-    const response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
+      response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
+    } else {
+      const requestBody: IHyperionClearCommand = {
+        command: 'clear',
+        priority: -1,
+      };
+
+      response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
+    }
+
+    this.platform.log.log(LogLevel.INFO, 'Switch response: ', response.data);
   }
 
   async getOn(): Promise<CharacteristicValue> {
@@ -69,7 +82,7 @@ export class platformAccessory {
     };
     const response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
     const data = response.data;
-    const isOn = data.info?.activeEffects[0]?.name === this.platform.config.hyperionEffect;
-    return isOn;
+    this.isOn = data.info?.activeEffects[0]?.name === this.platform.config.hyperionEffect;
+    return this.isOn;
   }
 }

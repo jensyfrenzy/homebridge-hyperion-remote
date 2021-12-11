@@ -13,6 +13,10 @@ export interface IHyperionEffectCommand extends IHyperionCommand {
   origin: string;
 }
 
+export interface IHyperionClearCommand extends IHyperionCommand {
+  priority: number;
+}
+
 export interface IHyperionEffect {
   name: string;
 }
