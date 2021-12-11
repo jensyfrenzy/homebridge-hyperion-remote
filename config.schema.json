@@ -9,7 +9,34 @@
         "title": "Name",
         "type": "string",
         "required": true,
-        "default": "Example Dynamic Platform"
+        "default": "Hyperion Remote"
+      },
+      "hyperionHost": {
+        "title": "Hyperion Host Name/IP",
+        "type": "string",
+        "required": true,
+        "default": "localhost"
+      },
+      "hyperionPort": {
+        "title": "Hyperion Port",
+        "type": "string",
+        "required": true,
+        "default": "19444"
+      },
+      "hyperionEffect": {
+        "title": "Desired Effect",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "title": "Mode",
+          "type": "string",
+          "enum": [
+            "Blue mood blobs",
+            "Candle",
+            "Full color mood blobs",
+            "Plasma"
+          ]
+        }
       }
     }
   }
