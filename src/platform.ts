@@ -2,7 +2,6 @@ import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, 
 
 import { PLATFORM_NAME, PLUGIN_NAME } from './settings';
 import { platformAccessory } from './platformAccessory';
-import { IPlatformConfig } from './interface';
 
 /**
  * HomebridgePlatform
@@ -18,7 +17,7 @@ export class HyperionRemote implements DynamicPlatformPlugin {
 
   constructor(
     public readonly log: Logger,
-    public readonly config: IPlatformConfig,
+    public readonly config: PlatformConfig,
     public readonly api: API,
   ) {
     this.log.log(LogLevel.INFO, 'Finished initializing platform:', this.config.name);
@@ -51,7 +50,6 @@ export class HyperionRemote implements DynamicPlatformPlugin {
    * must not be registered again to prevent "duplicate UUID" errors.
    */
   discoverDevices() {
-    const requestUrl = `http://${this.config.hyperionHost}:${this.config.hyperionPort}/json-rpc`;
     const device = {
       uuid: this.config.hyperionHost,
       displayName: this.config.name || '',
