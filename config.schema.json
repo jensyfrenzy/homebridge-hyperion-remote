@@ -21,7 +21,7 @@
         "title": "Hyperion Port",
         "type": "string",
         "required": true,
-        "default": "19444"
+        "default": "8090"
       },
       "hyperionEffect": {
         "title": "Desired Effect",

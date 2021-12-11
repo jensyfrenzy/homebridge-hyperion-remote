@@ -68,7 +68,7 @@ export class platformAccessory {
       command: 'serverinfo',
     };
     const response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
-    const data = response.data.json();
+    const data = response.data;
     const isOn = data.info?.activeEffects[0]?.name === this.platform.config.hyperionEffect;
     return isOn;
   }
