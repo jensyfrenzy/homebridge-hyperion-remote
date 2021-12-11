@@ -73,6 +73,7 @@ export class platformAccessory {
       response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
     }
 
+    this.isOn = !this.isOn;
     this.platform.log.log(LogLevel.INFO, 'Switch response: ', response.data);
   }
 
