@@ -9,7 +9,7 @@ export interface IHyperionCommand {
 export interface IHyperionEffectCommand extends IHyperionCommand {
   effect: IHyperionEffect;
   duration?: number;
-  priorty: number;
+  priority: number;
   origin: string;
 }
 

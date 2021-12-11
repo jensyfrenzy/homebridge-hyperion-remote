@@ -56,11 +56,11 @@ export class platformAccessory {
       effect: {
         name: this.platform.config.hyperionEffect[0],
       },
-      priorty: 50,
+      priority: 50,
       origin: 'homebridge',
     };
 
-    await axios.post(this.requestUrl, JSON.stringify(requestBody));
+    const response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
   }
 
   async getOn(): Promise<CharacteristicValue> {
