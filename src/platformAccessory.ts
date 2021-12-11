@@ -83,8 +83,7 @@ export class platformAccessory {
     };
     const response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
     const data = response.data;
-    this.platform.log.log(LogLevel.INFO, 'Response from getOn: ', data);
-    this.isOn = data.info?.activeEffects[0]?.name === this.platform.config.hyperionEffect;
+    this.isOn = data.info?.activeEffects[0]?.name === this.platform.config.hyperionEffect[0];
     return this.isOn;
   }
 }
