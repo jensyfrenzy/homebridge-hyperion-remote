@@ -27,3 +27,9 @@ export interface IPlatformConfig extends PlatformConfig {
   hyperionPort: string;
   hyperionEffect: string;
 }
+
+export interface IHyperionDevice {
+  host: string;
+  port: string;
+  displayName: string;
+}

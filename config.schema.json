@@ -6,19 +6,19 @@
     "type": "object",
     "properties": {
       "name": {
-        "title": "Name",
+        "title": "Names (comma separated)",
         "type": "string",
         "required": true,
         "default": "Hyperion Remote"
       },
       "hyperionHost": {
-        "title": "Hyperion Host Name/IP",
+        "title": "Hyperion Host Names/IPs (comma separated)",
         "type": "string",
         "required": true,
         "default": "localhost"
       },
       "hyperionPort": {
-        "title": "Hyperion Port",
+        "title": "Hyperion Ports (comma separated)",
         "type": "string",
         "required": true,
         "default": "8090"
@@ -32,9 +32,14 @@
           "type": "string",
           "enum": [
             "Blue mood blobs",
+            "Green mood blobs",
+            "Red mood blobs",
+            "Rainbow swirl",
             "Candle",
             "Full color mood blobs",
-            "Plasma"
+            "Plasma",
+            "Lights",
+            "Waves with Color"
           ]
         }
       }

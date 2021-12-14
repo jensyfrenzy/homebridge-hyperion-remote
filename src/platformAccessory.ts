@@ -19,10 +19,12 @@ export class platformAccessory {
   constructor(
     private readonly platform: HyperionRemote,
     private readonly accessory: PlatformAccessory,
+    private readonly host: string,
+    private readonly port: string,
   ) {
     this.platform.log.log(LogLevel.INFO, 'Hyperion Remote Host: ', this.platform.config.hyperionHost);
     this.platform.log.log(LogLevel.INFO, 'Hyperion Remote Port: ', this.platform.config.hyperionPort);
-    this.requestUrl = `http://${this.platform.config.hyperionHost}:${this.platform.config.hyperionPort}/json-rpc`;
+    this.requestUrl = `http://${host}:${port}/json-rpc`;
 
     // set accessory information
     this.accessory.getService(this.platform.Service.AccessoryInformation)!
