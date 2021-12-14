@@ -14,7 +14,7 @@ export class platformAccessory {
   private service: Service;
   private requestUrl: string;
   private isOn = false;
-  private currentEffect: string;
+  private currentEffect = '';
 
   constructor(
     private readonly platform: HyperionRemote,
