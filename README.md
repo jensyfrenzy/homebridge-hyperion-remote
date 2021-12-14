@@ -1,26 +1,7 @@
 
-<p align="center">
+# Homebridge Hyperion Remote
 
-<img src="https://github.com/homebridge/branding/raw/master/logos/homebridge-wordmark-logo-vertical.png" width="150">
-
-</p>
-
-
-# Homebridge Platform Plugin Template
-
-This is a template Homebridge platform plugin and can be used as a base to help you get started developing your own plugin.
-
-This template should be used in conjunction with the [developer documentation](https://developers.homebridge.io/). A full list of all supported service types, and their characteristics is available on this site.
-
-## Clone As Template
-
-Click the link below to create a new GitHub Repository using this template, or click the *Use This Template* button above.
-
-<span align="center">
-
-### [Create New Repository From Template](https://github.com/homebridge/homebridge-plugin-template/generate)
-
-</span>
+This plugin allows Homebridge to send specific effect(s) commands to a Hyperion server.  It is currently a work in progress and is not recomended to be used in a live/production environment.
 
 ## Setup Development Environment
 
