@@ -14,6 +14,7 @@ export class platformAccessory {
   private service: Service;
   private requestUrl: string;
   private isOn = false;
+  private currentEffect: string;
 
   constructor(
     private readonly platform: HyperionRemote,
@@ -57,7 +58,7 @@ export class platformAccessory {
       const requestBody: IHyperionEffectCommand = {
         command: 'effect',
         effect: {
-          name: this.platform.config.hyperionEffect[0],
+          name: this.getEffectName(),
         },
         priority: 50,
         origin: 'homebridge',
@@ -83,7 +84,18 @@ export class platformAccessory {
     };
     const response = await axios.post(this.requestUrl, JSON.stringify(requestBody));
     const data = response.data;
-    this.isOn = data.info?.activeEffects[0]?.name === this.platform.config.hyperionEffect[0];
+
+    this.currentEffect = data.info?.activeEffects[0]?.name || '';
+    this.isOn = !!data.info?.activeEffects?.length;
     return this.isOn;
+  }
+
+  private getEffectName(): string {
+    if (!this.platform.config.hyperionEffect || this.platform.config.hyperionEffect.length < 1) {
+      return this.currentEffect;
+    }
+
+    const index = Math.floor(Math.random() * this.platform.config.hyperionEffect.length);
+    return this.platform.config.hyperionEffect[index];
   }
 }

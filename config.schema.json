@@ -24,7 +24,7 @@
         "default": "8090"
       },
       "hyperionEffect": {
-        "title": "Desired Effect",
+        "title": "Desired Effect(s)",
         "type": "array",
         "uniqueItems": true,
         "items": {
