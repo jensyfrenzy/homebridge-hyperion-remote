@@ -22,7 +22,6 @@ export class platformAccessory {
   ) {
     this.platform.log.log(LogLevel.INFO, 'Hyperion Remote Host: ', this.platform.config.hyperionHost);
     this.platform.log.log(LogLevel.INFO, 'Hyperion Remote Port: ', this.platform.config.hyperionPort);
-    this.platform.log.log(LogLevel.INFO, 'Hyperion Remote Effect: ', this.platform.config.hyperionEffect[0]);
     this.requestUrl = `http://${this.platform.config.hyperionHost}:${this.platform.config.hyperionPort}/json-rpc`;
 
     // set accessory information
